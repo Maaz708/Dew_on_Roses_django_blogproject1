@@ -142,9 +142,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),  # your source static files (like static/image/)
-]
+
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # folder where collectstatic gathers files
 
@@ -196,7 +194,3 @@ CSRF_TRUSTED_ORIGINS = [
     "https://*.onrender.com"
 ]
 
-print(f"BASE_DIR: {BASE_DIR}", file=sys.stderr)
-print(f"STATICFILES_DIRS paths:", file=sys.stderr)
-for path in STATICFILES_DIRS:
-    print(f" - {path} : exists? {os.path.exists(path)}", file=sys.stderr)
