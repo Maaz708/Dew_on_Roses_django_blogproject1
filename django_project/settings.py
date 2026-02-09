@@ -9,7 +9,11 @@ https://docs.djangoproject.com/en/6.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
-from dotenv import load_dotenv
+try:
+    from dotenv import load_dotenv
+except ModuleNotFoundError:  # allows tooling to run even if python-dotenv isn't installed
+    def load_dotenv(*args, **kwargs):
+        return None
 import dj_database_url
 import cloudinary
 import cloudinary.uploader
@@ -143,10 +147,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # folder where collectstatic gathers files
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+# Use only app-level static folders (e.g. blog/static/blog/main.css)
+STATICFILES_DIRS = []
+
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
@@ -192,5 +198,9 @@ DEBUG = os.environ.get("DEBUG", "False") == "True"
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.onrender.com"
+]
+STATICFILES_FINDERS = [
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
 
