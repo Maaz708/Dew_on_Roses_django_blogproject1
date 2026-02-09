@@ -1,0 +1,23 @@
+{% extends "blog/base.html" %}
+{% block content %}
+
+<h4>Search Results{% if query %} for "{{ query }}"{% endif %}</h4>
+
+{% if results %}
+  {% for post in results %}
+    <article class="media content-section">
+      <div class="media-body">
+        <h5>
+          <a href="{% url 'post-detail' post.id %}">
+            {{ post.title }}
+          </a>
+        </h5>
+        <p>{{ post.content|truncatechars:150 }}</p>
+      </div>
+    </article>
+  {% endfor %}
+{% else %}
+  <p>No posts found.</p>
+{% endif %}
+
+{% endblock %}
