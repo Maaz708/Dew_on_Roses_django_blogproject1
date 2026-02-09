@@ -18,6 +18,10 @@ main.content {
     min-height: calc(100vh - 56px);
 
 }
+main.content .row {
+  margin-top: 20px;
+}
+
 
 main.content > .container {
   flex: 1;
