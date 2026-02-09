@@ -1,5 +1,11 @@
+# Collected static files (production)
+staticfiles/
 
-.env
+
+
+
+# Media uploads
+media/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
