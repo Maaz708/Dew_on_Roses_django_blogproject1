@@ -3,3 +3,5 @@ gunicorn
 whitenoise
 Pillow
 python-dotenv
+django-crispy-forms>=2.1
+crispy-bootstrap4>=2024.1
