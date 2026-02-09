@@ -168,7 +168,6 @@ DEFAULT_FROM_EMAIL = os.environ.get(
     EMAIL_HOST_USER
 )
 
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
