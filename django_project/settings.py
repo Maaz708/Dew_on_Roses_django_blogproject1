@@ -14,6 +14,7 @@ import dj_database_url
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
+import sys
 
 from pathlib import Path
 import os
@@ -195,3 +196,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://*.onrender.com"
 ]
 
+print(f"BASE_DIR: {BASE_DIR}", file=sys.stderr)
+print(f"STATICFILES_DIRS paths:", file=sys.stderr)
+for path in STATICFILES_DIRS:
+    print(f" - {path} : exists? {os.path.exists(path)}", file=sys.stderr)
